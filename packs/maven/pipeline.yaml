@@ -21,3 +21,7 @@ pipelines:
         name: set-version
       - sh: jx step tag --version \$(cat VERSION)
         name: tag-version
+    build:
+      steps:
+      - sh: mvn clean install
+        name: mvn-install
