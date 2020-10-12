@@ -9,8 +9,8 @@ pipelines:
       steps:
       - sh: mvn versions:set -DnewVersion=$PREVIEW_VERSION
         name: set-version
-      - sh: ./mvnw package -Pnative
-        name: mvn clean install
+      - sh: mvn package -Pnative
+        name: mvn package
   release:
     setVersion:
       steps:
@@ -23,5 +23,5 @@ pipelines:
         name: tag-version
     build:
       steps:
-      - sh: ./mvnw package -Pnative
-        name: mvn clean install
+      - sh: mvn package -Pnative
+        name: mvn package
