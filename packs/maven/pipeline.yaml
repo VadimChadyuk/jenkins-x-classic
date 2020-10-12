@@ -9,7 +9,7 @@ pipelines:
       steps:
       - sh: mvn versions:set -DnewVersion=$PREVIEW_VERSION
         name: set-version
-      - sh: ./mvnw package -Pnative -Dquarkus.native.container-build=true
+      - sh: ./mvnw package -Pnative
         name: mvnw package
   release:
     setVersion:
@@ -23,5 +23,5 @@ pipelines:
         name: tag-version
     build:
       steps:
-      - sh: ./mvnw package -Pnative -Dquarkus.native.container-build=true
+      - sh: ./mvnw package -Pnative
         name: mvnw package
